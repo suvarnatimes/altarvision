@@ -1,0 +1,438 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════
+   ALTAR VISION — PRISM CRYSTAL DESIGN SYSTEM
+   Light · Angular · Ultra-Transparent
+══════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* Prism palette */
+    --prism-violet:    #5b4fcf;
+    --prism-sky:       #3b82f6;
+    --prism-cyan:      #06b6d4;
+    --prism-rose:      #e879a0;
+    --prism-amber:     #f59e0b;
+    --prism-emerald:   #10b981;
+
+    /* Crystal surfaces — true transparency */
+    --crystal-0:    rgba(255, 255, 255, 0.00);
+    --crystal-4:    rgba(255, 255, 255, 0.04);
+    --crystal-8:    rgba(255, 255, 255, 0.08);
+    --crystal-14:   rgba(255, 255, 255, 0.14);
+    --crystal-22:   rgba(255, 255, 255, 0.22);
+    --crystal-40:   rgba(255, 255, 255, 0.40);
+    --crystal-65:   rgba(255, 255, 255, 0.65);
+    --crystal-85:   rgba(255, 255, 255, 0.85);
+
+    /* Glass border razor-thin */
+    --line-0:    rgba(255,255,255,0.00);
+    --line-20:   rgba(255,255,255,0.20);
+    --line-40:   rgba(255,255,255,0.40);
+    --line-violet: rgba(91,79,207,0.22);
+    --line-sky:    rgba(59,130,246,0.2);
+
+    /* Text */
+    --ink-900: #0c0a2e;
+    --ink-700: #2d2b5e;
+    --ink-500: #5e5a8a;
+    --ink-300: #a09ec0;
+    --ink-100: #e8e7f5;
+
+    /* Background tones */
+    --bg-root: #f0f4ff;
+    --bg-prism: #e8eeff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg-root);
+    background-image:
+      /* Geometric prism refractions */
+      linear-gradient(145deg, rgba(91,79,207,0.07) 0%, transparent 40%),
+      linear-gradient(215deg, rgba(59,130,246,0.06) 0%, transparent 40%),
+      linear-gradient(70deg, rgba(6,182,212,0.04) 20%, transparent 60%),
+      /* Subtle warm undertone */
+      radial-gradient(ellipse at 100% 0%, rgba(232,121,160,0.05) 0%, transparent 45%);
+    background-attachment: fixed;
+    color: var(--ink-700);
+    font-family: 'Inter', 'Outfit', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(91,79,207,0.18); color: var(--ink-900); }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--prism-violet), var(--prism-sky));
+    border-radius: 4px;
+  }
+}
+
+/* ══════════════════════════════════
+   PRISM GEOMETRY BACKGROUND PATTERNS
+══════════════════════════════════ */
+@layer utilities {
+
+  /* Deep prism scene — full page backdrop */
+  .prism-scene {
+    background-color: var(--bg-root);
+    background-image:
+      linear-gradient(145deg, rgba(91,79,207,0.09) 0%, transparent 45%),
+      linear-gradient(215deg, rgba(59,130,246,0.07) 0%, transparent 45%),
+      linear-gradient(70deg,  rgba(6,182,212,0.05) 15%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(232,121,160,0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  /* Hero: dramatic diagonal split */
+  .hero-prism {
+    background:
+      linear-gradient(135deg,
+        #e8eeff 0%,
+        #f0f4ff 35%,
+        #f8f6ff 65%,
+        #eff8ff 100%
+      );
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Crystal panels — ultra-transparent */
+  .crystal {
+    background: var(--crystal-14);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid var(--line-20);
+    border-radius: 18px;
+  }
+
+  .crystal-sm {
+    background: var(--crystal-8);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid var(--line-20);
+    border-radius: 12px;
+  }
+
+  .crystal-solid {
+    background: var(--crystal-65);
+    backdrop-filter: blur(32px) saturate(180%);
+    -webkit-backdrop-filter: blur(32px) saturate(180%);
+    border: 1px solid var(--line-40);
+    border-radius: 18px;
+  }
+
+  .crystal-hover {
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .crystal-hover:hover {
+    background: var(--crystal-22);
+    border-color: rgba(91,79,207,0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 56px rgba(91,79,207,0.13);
+  }
+
+  /* Dark crystal (for contrast sections) */
+  .crystal-dark {
+    background: rgba(12,10,46,0.55);
+    backdrop-filter: blur(28px) saturate(120%);
+    -webkit-backdrop-filter: blur(28px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+  }
+
+  .crystal-dark-hover {
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .crystal-dark-hover:hover {
+    background: rgba(12,10,46,0.68);
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-5px);
+  }
+
+  /* Prism stripe sections — indigo night */
+  .section-night {
+    background:
+      linear-gradient(145deg, #0c0a2e 0%, #101040 50%, #0a1a38 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Geometric grid overlay */
+  .geo-grid {
+    background-image:
+      linear-gradient(rgba(91,79,207,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,79,207,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Diamond dot pattern */
+  .dot-matrix {
+    background-image: radial-gradient(circle, rgba(91,79,207,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Razor accent lines — used as decorative elements */
+  .prism-line-h {
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(91,79,207,0.6) 20%,
+      rgba(59,130,246,0.8) 50%,
+      rgba(6,182,212,0.6) 80%,
+      transparent 100%
+    );
+    border: none;
+  }
+
+  .prism-line-v {
+    width: 2px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      rgba(91,79,207,0.5) 30%,
+      rgba(59,130,246,0.7) 70%,
+      transparent 100%
+    );
+  }
+
+  /* ── Gradient text ── */
+  .text-prism {
+    background: linear-gradient(130deg, #5b4fcf 0%, #3b82f6 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-prism-warm {
+    background: linear-gradient(130deg, #e879a0 0%, #5b4fcf 55%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-prism-light {
+    background: linear-gradient(130deg, #a5b4fc 0%, #67e8f9 50%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Buttons ── */
+  .btn-prism {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+    background: linear-gradient(130deg, #5b4fcf 0%, #3b82f6 100%);
+    color: white;
+    box-shadow: 0 6px 22px rgba(91,79,207,0.38);
+  }
+  .btn-prism::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(130deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.18) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .btn-prism:hover::after { opacity: 1; }
+  .btn-prism:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 38px rgba(91,79,207,0.48);
+  }
+  .btn-prism:active { transform: scale(0.97); }
+
+  .btn-crystal {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(91,79,207,0.35);
+    color: var(--ink-700);
+  }
+  .btn-crystal:hover {
+    background: rgba(91,79,207,0.1);
+    border-color: var(--prism-violet);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(91,79,207,0.18);
+  }
+
+  .btn-crystal-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: white;
+  }
+  .btn-crystal-dark:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+  }
+
+  /* ── Badge ── */
+  .badge-prism {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(91,79,207,0.1);
+    border: 1px solid rgba(91,79,207,0.22);
+    color: var(--prism-violet);
+  }
+
+  .badge-prism-dark {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* ── Layout ── */
+  .section-pad { padding: 96px 0; }
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Angular clip shapes (architecture) ── */
+  .clip-wedge-down {
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+  }
+  .clip-wedge-up {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+  .clip-angled-r {
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
+  }
+
+  /* ── Prism corner accent ── */
+  .corner-prism::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--prism-violet) 0%, transparent 70%);
+    opacity: 0.15;
+    border-radius: 18px 0 0 0;
+    pointer-events: none;
+  }
+
+  /* ── Number stat ── */
+  .stat-num {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(130deg, #5b4fcf, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Logo display ── */
+  .logo-on-light {
+    /* Dark navy logo on light background — just enhance */
+    filter: drop-shadow(0 1px 4px rgba(91,79,207,0.2));
+  }
+  .logo-on-dark {
+    /* Dark navy logo — invert to white */
+    filter: brightness(0) invert(1) drop-shadow(0 1px 6px rgba(255,255,255,0.5));
+  }
+  .logo-force-white {
+    /* Force white version with glow */
+    filter: brightness(10) saturate(0) drop-shadow(0 0 8px rgba(255,255,255,0.8));
+  }
+}
+
+/* ══════ Keyframes ══════ */
+@keyframes float-up {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(1deg); }
+}
+@keyframes float-down {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(-1deg); }
+}
+@keyframes prism-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes prism-counter {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+@keyframes shimmer-prism {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+@keyframes slide-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes beam-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(400%) skewX(-15deg); }
+}
+@keyframes pulse-ring-wa {
+  0% { transform: scale(0.92); opacity: 0.7; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* ══════ Responsive ══════ */
+@media (max-width: 768px) {
+  .section-pad { padding: 64px 0; }
+  .wrap { padding: 0 18px; }
+}
