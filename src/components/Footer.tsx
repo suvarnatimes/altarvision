@@ -59,14 +59,16 @@ export default function Footer() {
               {/* Social icons */}
               <div className="flex gap-2.5">
                 {[
-                  { label: "Facebook",  path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
-                  { label: "Instagram", path: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01M6.5 3.5h11A3 3 0 0 1 20.5 6.5v11A3 3 0 0 1 17.5 20.5h-11A3 3 0 0 1 3.5 17.5v-11A3 3 0 0 1 6.5 3.5z" },
-                  { label: "LinkedIn",  path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" },
-                  { label: "Twitter",   path: "M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" },
-                ].map(({ label, path }) => (
+                  { label: "Facebook",  href: "https://www.facebook.com/altarvision", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
+                  { label: "Instagram", href: "https://www.instagram.com/altarvision", path: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01M6.5 3.5h11A3 3 0 0 1 20.5 6.5v11A3 3 0 0 1 17.5 20.5h-11A3 3 0 0 1 3.5 17.5v-11A3 3 0 0 1 6.5 3.5z" },
+                  { label: "LinkedIn",  href: "https://www.linkedin.com/company/altarvision", path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" },
+                  { label: "Twitter",   href: "https://x.com/altarvision", path: "M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" },
+                ].map(({ label, href, path }) => (
                   <a
                     key={label}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-250"
                     style={{
@@ -234,16 +236,16 @@ export default function Footer() {
               © {new Date().getFullYear()} AltarVision. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm" style={{ color: "var(--ink-300)" }}>
-              <a href="#" className="hover:text-[--prism-violet] transition-colors" style={{ color: "var(--ink-300)" }}
+              <Link href="/contact" className="hover:text-[--prism-violet] transition-colors" style={{ color: "var(--ink-300)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--prism-violet)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--ink-300)"; }}>
                 Privacy Policy
-              </a>
-              <a href="#" className="transition-colors" style={{ color: "var(--ink-300)" }}
+              </Link>
+              <Link href="/contact" className="transition-colors" style={{ color: "var(--ink-300)" }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--prism-violet)"; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--ink-300)"; }}>
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -276,7 +276,7 @@ export default function ServicesPage() {
                 <FadeIn direction={idx % 2 === 0 ? "right" : "left"} delay={0.2}>
                   <div className="space-y-4">
                     {/* Sub-service cards */}
-                    {service.subServices.map((sub, i) => (
+                    {service.subServices.map((sub) => (
                       <motion.div
                         key={sub.label}
                         className="crystal crystal-hover p-6 flex items-center gap-5"
