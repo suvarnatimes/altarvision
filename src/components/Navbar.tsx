@@ -98,27 +98,17 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scaleY: 1 }}
             exit={{ opacity: 0, y: -10, scaleY: 0.94 }}
             transition={{ duration: 0.22 }}
-            style={{ transformOrigin: "top" }}
-            className="md:hidden mx-4 mt-2 rounded-xl overflow-hidden"
-            style_={{
+            style={{
+              transformOrigin: "top",
               background: "rgba(255,255,255,0.88)",
               backdropFilter: "blur(28px)",
               WebkitBackdropFilter: "blur(28px)",
               border: "1px solid rgba(255,255,255,0.6)",
               boxShadow: "0 16px 48px rgba(91,79,207,0.16)",
             }}
+            className="md:hidden mx-4 mt-2 rounded-xl overflow-hidden"
           >
-            <div
-              style={{
-                background: "rgba(255,255,255,0.88)",
-                backdropFilter: "blur(28px)",
-                WebkitBackdropFilter: "blur(28px)",
-                border: "1px solid rgba(255,255,255,0.6)",
-                borderRadius: "12px",
-                boxShadow: "0 16px 48px rgba(91,79,207,0.16)",
-              }}
-            >
-              <div className="p-5 flex flex-col gap-2">
+            <div className="p-5 flex flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -141,7 +131,6 @@ export default function Navbar() {
                   Start a Project ↗
                 </Link>
               </div>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>

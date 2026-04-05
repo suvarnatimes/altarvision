@@ -436,7 +436,6 @@ function StatsBand() {
             WebkitBackdropFilter: "blur(28px) saturate(150%)",
             border: "1px solid rgba(255,255,255,0.5)",
             boxShadow: "0 8px 40px rgba(91,79,207,0.08)",
-            divideColor: "rgba(91,79,207,0.08)",
           }}
         >
           {stats.map(({ value, label, icon: Icon, color }, i) => (
