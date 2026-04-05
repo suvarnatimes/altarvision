@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Build Verified 2026-04-05
 
 import { useRef } from "react";
 import Link from "next/link";
