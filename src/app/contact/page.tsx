@@ -84,7 +84,8 @@ const inputStyle = {
 };
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -102,8 +103,30 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    await new Promise((r) => setTimeout(r, 1500));
-    setStatus("sent");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        const errorMsg = typeof result.error === 'object' ? result.error.message : result.error;
+        throw new Error(errorMsg || "Something went wrong. Please try again.");
+      }
+
+      setStatus("sent");
+    } catch (err: any) {
+      console.error("Submission error:", err);
+      setErrorMessage(err.message || "Failed to send message. Please try again later.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -233,6 +256,11 @@ export default function ContactPage() {
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-5">
+                      {status === "error" && (
+                        <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium">
+                          {errorMessage}
+                        </div>
+                      )}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
                           <label className="block text-xs font-bold mb-2 uppercase tracking-wider" style={{ color: "var(--ink-500)" }} htmlFor="name">
