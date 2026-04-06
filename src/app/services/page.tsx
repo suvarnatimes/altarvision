@@ -173,7 +173,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-prism dot-matrix min-h-[70vh] relative flex items-center overflow-hidden pt-20">
+      <section className="hero-prism dot-matrix min-h-[70vh] relative flex items-center overflow-hidden pt-48">
         <div
           className="absolute right-0 top-0 h-full w-[50%] pointer-events-none"
           style={{

@@ -109,7 +109,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-prism dot-matrix relative pt-36 pb-20 overflow-hidden">
+      <section className="hero-prism dot-matrix relative pt-48 pb-20 overflow-hidden">
         {/* Geometric prism accents */}
         <div
           className="absolute right-0 top-0 h-full w-[45%] pointer-events-none"

@@ -107,7 +107,7 @@ export default function HomePage() {
 /* ── HERO ── */
 function HeroSection() {
   return (
-    <section className="hero-prism dot-matrix min-h-screen relative flex items-center overflow-hidden">
+    <section className="hero-prism dot-matrix min-h-screen relative flex items-center overflow-hidden pt-28">
 
       {/* Angular background accent — large tilted prism shape */}
       <div
@@ -169,7 +169,7 @@ function HeroSection() {
       />
 
       {/* Content */}
-      <div className="wrap relative z-10 pt-36 pb-24 w-full">
+      <div className="wrap relative z-10 pt-16 pb-24 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Left col — 7 cols */}

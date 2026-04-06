@@ -40,7 +40,7 @@ export default function Navbar() {
         >
           {/* Logo — responsive now */}
           <Link href="/" className="flex items-center shrink-0">
-            <div className="relative w-[220px] sm:w-[280px] md:w-[380px] h-[48px] sm:h-[58px] md:h-[68px] transition-transform hover:scale-[1.02] duration-300">
+            <div className="relative w-[220px] sm:w-[280px] md:w-[380px] h-[42px] sm:h-[52px] md:h-[60px] transition-transform hover:scale-[1.02] duration-300">
               <Image
                 src="/altarvisionlogo.png"
                 alt="AltarVision Logo"
