@@ -237,7 +237,7 @@ export default function ServicesPage() {
             <div className="wrap">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${idx % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
                 {/* Content */}
-                <FadeIn direction={idx % 2 === 0 ? "left" : "right"}>
+                <FadeIn direction={idx % 2 === 0 ? "left" : "right"} className="flex flex-col items-center lg:items-start text-center lg:text-left">
                   <div
                     className="w-16 h-16 rounded-xl flex items-center justify-center mb-6"
                     style={{ background: service.bg, border: `1px solid ${service.border}`, boxShadow: `0 12px 40px ${service.color}15` }}
@@ -253,12 +253,12 @@ export default function ServicesPage() {
                   >
                     {service.title}
                   </h2>
-                  <p className="leading-relaxed mb-8" style={{ color: "var(--ink-500)" }}>{service.description}</p>
+                  <p className="leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0" style={{ color: "var(--ink-500)" }}>{service.description}</p>
 
                   {/* Features list */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 w-full">
                     {service.features.map((f) => (
-                      <div key={f} className="flex items-center gap-3 text-sm font-medium" style={{ color: "var(--ink-700)" }}>
+                      <div key={f} className="flex items-center gap-3 justify-center lg:justify-start text-sm font-medium" style={{ color: "var(--ink-700)" }}>
                         <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: `${service.color}18` }}>
                           <CheckCircle2 size={13} style={{ color: service.color }} />
                         </div>
@@ -298,14 +298,14 @@ export default function ServicesPage() {
 
                     {/* Key benefits */}
                     <div
-                      className="crystal p-6 mt-6"
+                      className="crystal p-6 mt-6 text-center lg:text-left"
                       style={{ background: "rgba(255,255,255,0.3)", borderColor: `${service.color}30` }}
                     >
-                      <div className="text-xs font-black uppercase tracking-wider mb-4 flex items-center gap-2" style={{ color: "var(--ink-900)" }}>
+                      <div className="text-xs font-black uppercase tracking-wider mb-4 flex items-center justify-center lg:justify-start gap-2" style={{ color: "var(--ink-900)" }}>
                         <ShieldCheck size={16} style={{ color: service.color }} />
                         Operational Benefits
                       </div>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                         {service.benefits.map((b) => (
                           <span
                             key={b}
@@ -353,7 +353,7 @@ export default function ServicesPage() {
               >
                 Ready to get started?
               </h2>
-              <p className="max-w-xl mx-auto mb-10 text-lg" style={{ color: "var(--ink-500)" }}>
+              <p className="max-w-xl mx-auto mb-10 text-lg text-center mx-auto" style={{ color: "var(--ink-500)" }}>
                 Tell us about your project and we&apos;ll put together a custom plan and free quote just for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

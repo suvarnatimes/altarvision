@@ -148,11 +148,11 @@ export default function ContactPage() {
 
             {/* Contact Info sidebar */}
             <div className="lg:col-span-2 space-y-5">
-              <FadeIn direction="left">
+              <FadeIn direction="left" className="text-center lg:text-left">
                 <h2 className="text-2xl font-extrabold text-[#0f0e2a] mb-2 font-[family-name:var(--font-outfit)]">
                   Contact Information
                 </h2>
-                <p className="text-[#5a5886] text-sm leading-relaxed mb-6">
+                <p className="text-[#5a5886] text-sm leading-relaxed mb-6 max-w-md mx-auto lg:mx-0">
                   We&apos;re available Monday–Saturday, 9am–7pm IST. For urgent queries, WhatsApp us directly.
                 </p>
               </FadeIn>
@@ -202,15 +202,15 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-3">
-              <FadeIn direction="right">
+              <FadeIn direction="right" className="text-center sm:text-left">
                 <div
-                  className="crystal p-8 md:p-10"
+                  className="crystal p-6 sm:p-8 md:p-10"
                   style={{ background: "rgba(255,255,255,0.22)" }}
                 >
                   <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-extrabold mb-2" style={{ color: "var(--ink-900)" }}>
                     Send Us a Message
                   </h2>
-                  <p className="text-sm mb-8" style={{ color: "var(--ink-500)" }}>
+                  <p className="text-sm mb-8 max-w-md mx-auto sm:mx-0" style={{ color: "var(--ink-500)" }}>
                     We&apos;ll get back to you within 24 hours with a tailored plan and quote.
                   </p>
 
@@ -362,7 +362,7 @@ export default function ContactPage() {
       {/* Map */}
       <section className="pb-20 prism-scene">
         <div className="wrap">
-          <FadeIn>
+          <FadeIn className="text-center sm:text-left">
             <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-extrabold mb-6" style={{ color: "var(--ink-900)" }}>
               Find Us in Machilipatnam
             </h2>

@@ -38,9 +38,9 @@ export default function Navbar() {
               : "bg-white/40 backdrop-blur-xl border border-white/30"
           }`}
         >
-          {/* Logo — massively larger now */}
+          {/* Logo — responsive now */}
           <Link href="/" className="flex items-center shrink-0">
-            <div className="relative w-[380px] h-[68px] transition-transform hover:scale-[1.02] duration-300">
+            <div className="relative w-[220px] sm:w-[280px] md:w-[380px] h-[48px] sm:h-[58px] md:h-[68px] transition-transform hover:scale-[1.02] duration-300">
               <Image
                 src="/altarvisionlogo.png"
                 alt="AltarVision Logo"

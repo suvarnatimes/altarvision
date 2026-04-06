@@ -31,7 +31,7 @@ export default function FloatingButtons() {
         transition={{ delay: 1.2, type: "spring", stiffness: 220 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl flex items-center justify-center"
+        className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-14 h-14 rounded-2xl flex items-center justify-center"
         style={{
           background: "linear-gradient(135deg, #25d366, #128c7e)",
           boxShadow: "0 6px 28px rgba(37,211,102,0.45)",
@@ -59,7 +59,7 @@ export default function FloatingButtons() {
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-28 right-8 z-50 w-11 h-11 rounded-xl flex items-center justify-center"
+            className="fixed bottom-24 right-6 sm:bottom-28 sm:right-8 z-50 w-11 h-11 rounded-xl flex items-center justify-center"
             style={{
               background: "rgba(255,255,255,0.75)",
               backdropFilter: "blur(16px)",

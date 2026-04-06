@@ -178,14 +178,14 @@ function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-7"
+              className="mb-7 flex justify-center lg:justify-start"
             >
-              <span className="badge-prism">✦ Global Digital Agency — Machilipatnam, India</span>
+              <span className="badge-prism text-[10px] sm:text-xs">✦ Global Digital Agency — Machilipatnam, India</span>
             </motion.div>
 
             <motion.h1
-              className="font-[family-name:var(--font-outfit)] font-black leading-[1.05] mb-7"
-              style={{ fontSize: "clamp(2.6rem, 5vw, 4.2rem)", color: "var(--ink-900)" }}
+              className="font-[family-name:var(--font-outfit)] font-black leading-[1.05] mb-7 text-center lg:text-left"
+              style={{ fontSize: "clamp(2.4rem, 8vw, 4.2rem)", color: "var(--ink-900)" }}
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -199,7 +199,7 @@ function HeroSection() {
             </motion.h1>
 
             <motion.p
-              className="text-lg mb-10 leading-relaxed max-w-lg"
+              className="text-lg mb-10 leading-relaxed max-w-lg text-center lg:text-left mx-auto lg:mx-0"
               style={{ color: "var(--ink-500)" }}
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
@@ -210,29 +210,29 @@ function HeroSection() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.26 }}
             >
-              <Link href="/contact" className="btn-prism">
+              <Link href="/contact" className="btn-prism justify-center">
                 Start Your Project <ArrowRight size={17} />
               </Link>
-              <Link href="/services" className="btn-crystal">
+              <Link href="/services" className="btn-crystal justify-center">
                 Explore Services
               </Link>
             </motion.div>
 
             {/* Contact quick-access */}
             <motion.div
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <a
                 href="tel:+916302596477"
-                className="flex items-center gap-2.5 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-250 hover:scale-105"
+                className="flex items-center gap-2.5 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-250 hover:scale-105 shrink-0"
                 style={{
                   background: "rgba(91,79,207,0.07)",
                   border: "1px solid rgba(91,79,207,0.18)",
@@ -244,7 +244,7 @@ function HeroSection() {
               </a>
               <a
                 href="mailto:altarvision122@gmail.com"
-                className="flex items-center gap-2.5 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-250 hover:scale-105"
+                className="flex items-center gap-2.5 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-250 hover:scale-105 shrink-0"
                 style={{
                   background: "rgba(59,130,246,0.07)",
                   border: "1px solid rgba(59,130,246,0.18)",
@@ -252,7 +252,7 @@ function HeroSection() {
                 }}
               >
                 <Mail size={15} />
-                altarvision122@gmail.com
+                <span className="truncate max-w-[200px]">altarvision122@gmail.com</span>
               </a>
             </motion.div>
           </div>
@@ -429,7 +429,7 @@ function StatsBand() {
     <section className="py-6 relative z-10">
       <div className="wrap">
         <div
-          className="rounded-2xl px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-0 divide-x"
+          className="rounded-2xl px-4 py-5 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-0 md:divide-x"
           style={{
             background: "rgba(255,255,255,0.55)",
             backdropFilter: "blur(28px) saturate(150%)",
@@ -439,16 +439,16 @@ function StatsBand() {
           }}
         >
           {stats.map(({ value, label, icon: Icon, color }, i) => (
-            <FadeIn key={label} delay={i * 0.08} className="flex items-center justify-center gap-4 py-4 px-6">
+            <FadeIn key={label} delay={i * 0.08} className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 py-4 px-2 sm:px-6">
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0"
                 style={{ background: `${color}14`, border: `1px solid ${color}28` }}
               >
                 <Icon size={18} style={{ color }} />
               </div>
-              <div>
-                <div className="text-2xl font-extrabold" style={{ color: "var(--ink-900)" }}>{value}</div>
-                <div className="text-xs font-medium" style={{ color: "var(--ink-300)" }}>{label}</div>
+              <div className="text-center sm:text-left">
+                <div className="text-xl sm:text-2xl font-extrabold" style={{ color: "var(--ink-900)" }}>{value}</div>
+                <div className="text-[10px] sm:text-xs font-medium" style={{ color: "var(--ink-300)" }}>{label}</div>
               </div>
             </FadeIn>
           ))}
@@ -622,7 +622,7 @@ function WhyUsSection() {
     <section className="section-pad prism-scene">
       <div className="wrap">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <FadeIn direction="left">
+          <FadeIn direction="left" className="text-center lg:text-left">
             <span className="badge-prism mb-5">Why AltarVision</span>
             <h2
               className="font-[family-name:var(--font-outfit)] font-extrabold mb-5"
@@ -631,15 +631,15 @@ function WhyUsSection() {
               The Partner You{" "}
               <span className="text-prism">Can Trust</span>
             </h2>
-            <p className="leading-relaxed mb-8" style={{ color: "var(--ink-500)", fontSize: "1.05rem" }}>
+            <p className="leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0" style={{ color: "var(--ink-500)", fontSize: "1.05rem" }}>
               We&apos;re not just another development agency. We&apos;re your long-term digital growth partner —
               combining technology, creativity, and strategy to deliver outcomes that matter.
             </p>
-            <div className="space-y-3.5 mb-8">
+            <div className="space-y-3.5 mb-8 flex flex-col items-center lg:items-start">
               {whyUs.map((point, i) => (
                 <motion.div
                   key={i}
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-3 justify-center lg:justify-start"
                   initial={{ opacity: 0, x: -18 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -655,9 +655,11 @@ function WhyUsSection() {
                 </motion.div>
               ))}
             </div>
-            <Link href="/contact" className="btn-prism">
-              Let&apos;s Work Together <ArrowRight size={17} />
-            </Link>
+            <div className="flex justify-center lg:justify-start">
+              <Link href="/contact" className="btn-prism">
+                Let&apos;s Work Together <ArrowRight size={17} />
+              </Link>
+            </div>
           </FadeIn>
 
           <FadeIn direction="right">
@@ -766,7 +768,7 @@ function CTASection() {
       <div className="wrap">
         <FadeIn>
           <div
-            className="relative rounded-2xl p-12 md:p-20 text-center overflow-hidden"
+            className="relative rounded-2xl p-8 sm:p-12 md:p-20 text-center overflow-hidden"
             style={{
               background: "rgba(255,255,255,0.22)",
               backdropFilter: "blur(32px) saturate(160%)",
