@@ -79,6 +79,9 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
   },
+  verification: {
+    google: "l25knexv1-TeP_RVp2wosXp6letFYGyKIz-PUoj2vUU",
+  },
 };
 
 export const viewport: Viewport = {
