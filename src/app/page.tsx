@@ -60,6 +60,9 @@ const portfolio = [
   { title: "Janatha Trust",             url: "http://janathatrust.com/",                            tag: "Web Development", color: "#3b82f6", desc: "Non-profit organisation digital presence" },
   { title: "John Balcony Safety Nets",  url: "https://www.johnbalconysafetynets.com/",             tag: "E-commerce",      color: "#10b981", desc: "Lead generation website for safety solutions" },
   { title: "Tamizha Balcony Nets",      url: "http://tamizhabalconypigeonsafetynets.in/",          tag: "SEO + Web",       color: "#f59e0b", desc: "Regional business with strong local SEO" },
+  { title: "Star Safety Nets Chennai",  url: "https://starbalconysafetynetschennai.com/",          tag: "Web Development", color: "#06b6d4", desc: "Website development for safety nets in Chennai" },
+  { title: "Pigeon Safety Cricket Nets",url: "https://www.pigeonsafetycricketnets.in/",            tag: "Web + Local SEO", color: "#e879a0", desc: "Safety nets business covering major cities in Andhra Pradesh" },
+  { title: "SS Sai Cooling Systems",    url: "https://sssaicoolingsystem.in/",                     tag: "Web Development", color: "#8b5cf6", desc: "Professional web presence for cooling systems services" },
 ];
 
 const stats = [
