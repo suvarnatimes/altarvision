@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useAuth, SignInButton, SignUpButton } from "@clerk/nextjs";
 
 const services = [
   "Web Development",
@@ -19,6 +20,8 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const { isSignedIn, isLoaded } = useAuth();
+
   return (
     <footer className="relative overflow-hidden">
       {/* Razor gradient top border */}
@@ -160,6 +163,58 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                {isLoaded && !isSignedIn ? (
+                  <>
+                    <li>
+                      <SignInButton mode="modal">
+                        <button
+                          className="text-sm flex items-center gap-2 group transition-colors duration-200 text-left w-full focus:outline-none"
+                          style={{ color: "var(--ink-500)" }}
+                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--prism-sky)"; }}
+                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--ink-500)"; }}
+                        >
+                          <span
+                            className="w-1 h-1 rounded-full shrink-0 transition-all duration-300 group-hover:scale-150"
+                            style={{ background: "linear-gradient(135deg, #3b82f6, #06b6d4)" }}
+                          />
+                          Log In
+                        </button>
+                      </SignInButton>
+                    </li>
+                    <li>
+                      <SignUpButton mode="modal">
+                        <button
+                          className="text-sm flex items-center gap-2 group transition-colors duration-200 text-left w-full focus:outline-none"
+                          style={{ color: "var(--ink-500)" }}
+                          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--prism-sky)"; }}
+                          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--ink-500)"; }}
+                        >
+                          <span
+                            className="w-1 h-1 rounded-full shrink-0 transition-all duration-300 group-hover:scale-150"
+                            style={{ background: "linear-gradient(135deg, #3b82f6, #06b6d4)" }}
+                          />
+                          Sign Up
+                        </button>
+                      </SignUpButton>
+                    </li>
+                  </>
+                ) : isLoaded && isSignedIn ? (
+                  <li>
+                    <Link
+                      href="/dashboard"
+                      className="text-sm flex items-center gap-2 group transition-colors duration-200"
+                      style={{ color: "var(--ink-500)" }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "var(--prism-sky)"; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "var(--ink-500)"; }}
+                    >
+                      <span
+                        className="w-1 h-1 rounded-full shrink-0 transition-all duration-300 group-hover:scale-150"
+                        style={{ background: "linear-gradient(135deg, #3b82f6, #06b6d4)" }}
+                      />
+                      Dashboard
+                    </Link>
+                  </li>
+                ) : null}
               </ul>
             </div>
 

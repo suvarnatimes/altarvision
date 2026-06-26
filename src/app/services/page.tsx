@@ -356,12 +356,18 @@ export default function ServicesPage() {
               <p className="max-w-xl mx-auto mb-10 text-lg text-center mx-auto" style={{ color: "var(--ink-500)" }}>
                 Tell us about your project and we&apos;ll put together a custom plan and free quote just for you.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link href="/contact" className="btn-prism">
                   Request a Free Quote <ArrowRight size={18} />
                 </Link>
                 <a
-                  href="https://wa.me/916302596477?text=Hello%20AltarVision!%20I'm%20interested%20in%20your%20services."
+                  href="tel:+916302596477"
+                  className="btn-crystal"
+                >
+                  Call Us 📞
+                </a>
+                <a
+                  href="https://wa.me/916302596477?text=Hello%20AltarVision!%20I&apos;m%20interested%20in%20your%20services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-crystal"

@@ -6,10 +6,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { SignInButton, SignUpButton, UserButton, useAuth, useUser } from "@clerk/nextjs";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/prompts", label: "Prompts" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -17,6 +19,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { isSignedIn, isLoaded } = useAuth();
+  const { user } = useUser();
+
+  const isAdmin = user?.publicMetadata?.role === "admin";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -68,25 +74,55 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center">
+          {/* Auth & CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            {isLoaded && !isSignedIn && (
+              <>
+                <SignInButton mode="modal">
+                  <button className="text-sm font-semibold text-[#2d2b5e] hover:text-[#5b4fcf] transition-colors">
+                    Log in
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="px-4 py-2 rounded-lg text-sm font-semibold bg-[rgba(91,79,207,0.1)] text-[#5b4fcf] hover:bg-[rgba(91,79,207,0.15)] transition-colors">
+                    Sign up
+                  </button>
+                </SignUpButton>
+              </>
+            )}
+            {isLoaded && isSignedIn && (
+              <>
+                {isAdmin && (
+                  <Link href="/admin" className="px-4 py-2 rounded-lg text-sm font-bold bg-[#5b4fcf] text-white hover:bg-[#4a3ebd] transition-colors shadow-sm mr-1">
+                    Admin Panel
+                  </Link>
+                )}
+                <Link href="/dashboard" className="text-sm font-semibold text-[#2d2b5e] hover:text-[#5b4fcf] transition-colors mr-2">
+                  Dashboard
+                </Link>
+                <UserButton />
+              </>
+            )}
             <Link href="/contact" className="btn-prism text-xs py-2.5 px-5">
               Start a Project ↗
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
-            style={{
-              background: "rgba(91,79,207,0.07)",
-              border: "1px solid rgba(91,79,207,0.15)",
-            }}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={19} color="#5b4fcf" /> : <Menu size={19} color="#5b4fcf" />}
-          </button>
+          {/* Mobile Toggle & User Button */}
+          <div className="md:hidden flex items-center gap-3">
+            {isLoaded && isSignedIn && <UserButton />}
+            <button
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+              style={{
+                background: "rgba(91,79,207,0.07)",
+                border: "1px solid rgba(91,79,207,0.15)",
+              }}
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={19} color="#5b4fcf" /> : <Menu size={19} color="#5b4fcf" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -123,6 +159,44 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
+                {isLoaded && !isSignedIn && (
+                  <>
+                    <SignInButton mode="modal">
+                      <button onClick={() => setMobileOpen(false)} className="py-3 px-4 rounded-lg text-sm font-semibold text-left text-[#2d2b5e] hover:bg-[rgba(91,79,207,0.07)] hover:text-[#5b4fcf]">
+                        Log in
+                      </button>
+                    </SignInButton>
+                    <SignUpButton mode="modal">
+                      <button onClick={() => setMobileOpen(false)} className="py-3 px-4 rounded-lg text-sm font-semibold text-center bg-[rgba(91,79,207,0.1)] text-[#5b4fcf] hover:bg-[rgba(91,79,207,0.15)] mt-1">
+                        Sign up
+                      </button>
+                    </SignUpButton>
+                  </>
+                )}
+                {isLoaded && isSignedIn && (
+                  <div className="flex flex-col gap-2">
+                    {isAdmin && (
+                      <Link
+                        href="/admin"
+                        onClick={() => setMobileOpen(false)}
+                        className={`py-3 px-4 rounded-lg text-sm font-bold transition-colors bg-[#5b4fcf]/10 text-[#5b4fcf] border border-[#5b4fcf]/20`}
+                      >
+                        Admin Panel
+                      </Link>
+                    )}
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setMobileOpen(false)}
+                      className={`py-3 px-4 rounded-lg text-sm font-semibold transition-colors ${
+                        pathname === "/dashboard"
+                          ? "bg-[rgba(91,79,207,0.1)] text-[#5b4fcf]"
+                          : "text-[#2d2b5e] hover:bg-[rgba(91,79,207,0.07)] hover:text-[#5b4fcf]"
+                      }`}
+                    >
+                      Dashboard
+                    </Link>
+                  </div>
+                )}
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
