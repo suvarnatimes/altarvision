@@ -1,6 +1,5 @@
 import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
-import { getStorage } from "firebase-admin/storage";
 
 const initAdmin = () => {
   const apps = getApps();
@@ -19,18 +18,16 @@ const initAdmin = () => {
         clientEmail,
         privateKey: privateKey.replace(/\\n/g, "\n"),
       }),
-      storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     });
   }
 
   return initializeApp({
     projectId: projectId || "altarvision-96e59",
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   });
 };
 
 const adminApp = initAdmin();
 const adminDb = getFirestore(adminApp);
-const adminStorage = getStorage(adminApp);
 
-export { adminApp, adminDb, adminStorage };
+export { adminApp, adminDb };
+
