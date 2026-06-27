@@ -9,23 +9,34 @@ export default async function EditPromptPage({
 }) {
   const { id } = await params;
 
-  // 1. Fetch prompt details
-  const promptDoc = await adminDb.collection("prompts").doc(id).get();
-  if (!promptDoc.exists) {
-    notFound();
+  let prompt: any = null;
+  let categories: { id: string; name: string }[] = [];
+
+  try {
+    // 1. Fetch prompt details
+    const promptDoc = await adminDb.collection("prompts").doc(id).get();
+    if (!promptDoc.exists) {
+      notFound();
+    }
+
+    prompt = {
+      id: promptDoc.id,
+      ...promptDoc.data(),
+    };
+
+    // 2. Fetch categories
+    const categoriesSnapshot = await adminDb.collection("categories").orderBy("name", "asc").get();
+    categories = categoriesSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      name: doc.data().name || "Unknown",
+    }));
+  } catch (error: any) {
+    // If it's a notFound redirect, re-throw it
+    if (error?.digest?.startsWith("NEXT_NOT_FOUND")) throw error;
+    // Otherwise show a helpful error instead of a silent 404
+    console.error("EditPromptPage error:", error);
+    throw new Error(`Failed to load prompt for editing: ${error.message}`);
   }
-
-  const prompt = {
-    id: promptDoc.id,
-    ...promptDoc.data(),
-  } as any;
-
-  // 2. Fetch categories
-  const categoriesSnapshot = await adminDb.collection("categories").orderBy("name", "asc").get();
-  const categories = categoriesSnapshot.docs.map((doc) => ({
-    id: doc.id,
-    name: doc.data().name || "Unknown",
-  }));
 
   return (
     <div className="flex flex-col gap-6">
@@ -42,3 +53,4 @@ export default async function EditPromptPage({
     </div>
   );
 }
+
