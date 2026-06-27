@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
-import { adminStorage } from "@/lib/firebase/admin";
+import { r2Client } from "@/lib/cloudflare/r2";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getUserRole } from "@/lib/auth/roles";
 import { sanitizeInput } from "@/lib/security/sanitize";
 
@@ -42,22 +43,26 @@ export async function POST(req: Request) {
     const fileName = `${userId}_${Date.now()}.${fileExtension}`;
     const filePath = `${sanitizedFolder}/${fileName}`;
 
-    const bucket = adminStorage.bucket();
-    const blob = bucket.file(filePath);
+    const bucketName = process.env.CLOUDFLARE_R2_BUCKET_NAME;
+    const publicDomain = process.env.NEXT_PUBLIC_CLOUDFLARE_R2_PUBLIC_URL;
 
-    // Upload the file
-    await blob.save(buffer, {
-      metadata: {
-        contentType: file.type,
-      },
+    if (!bucketName || !publicDomain) {
+      return NextResponse.json({ error: "Cloudflare R2 storage is not configured on the server." }, { status: 500 });
+    }
+
+    // Upload to Cloudflare R2 via S3 client
+    const command = new PutObjectCommand({
+      Bucket: bucketName,
+      Key: filePath,
+      Body: buffer,
+      ContentType: file.type,
     });
 
-    // Make the file publicly readable for web client rendering
-    await blob.makePublic();
+    await r2Client.send(command);
 
-    // Generate public firebase storage download link
-    const bucketName = bucket.name;
-    const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucketName}/o/${encodeURIComponent(filePath)}?alt=media`;
+    // Generate public URL using the configured public bucket domain
+    const cleanDomain = publicDomain.replace(/\/$/, "");
+    const publicUrl = `${cleanDomain}/${filePath}`;
 
     return NextResponse.json({
       success: true,
@@ -69,3 +74,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: error.message || "Failed to upload file to storage" }, { status: 500 });
   }
 }
+
