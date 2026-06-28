@@ -158,7 +158,7 @@ export default function PromptDetailsClient({
 
       // 2. Open Razorpay Standard checkout Modal
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_T5Jnectk4BmLhJ",
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "",
         amount: orderData.amount,
         currency: orderData.currency,
         name: "AltarVision AI",
