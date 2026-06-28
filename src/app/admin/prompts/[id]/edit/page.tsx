@@ -15,13 +15,27 @@ export default async function EditPromptPage({
 
   try {
     // 1. Fetch prompt details
+    console.log(`[EDIT PAGE DEBUG] Fetching prompt with ID: ${id}`);
     const promptDoc = await adminDb.collection("prompts").doc(id).get();
     promptExists = promptDoc.exists;
+    console.log(`[EDIT PAGE DEBUG] Prompt exists: ${promptExists}`);
 
     if (promptExists) {
+      const data = promptDoc.data() || {};
       promptData = {
         id: promptDoc.id,
-        ...promptDoc.data(),
+        title: data.title || "",
+        slug: data.slug || "",
+        description: data.description || "",
+        categoryId: data.categoryId || "",
+        thumbnail: data.thumbnail || "",
+        previewImages: data.previewImages || [],
+        promptContent: data.promptContent || "",
+        tags: data.tags || [],
+        price: data.price || 0,
+        featured: data.featured || false,
+        status: data.status || "draft",
+        videoUrl: data.videoUrl || "",
       };
     }
 
