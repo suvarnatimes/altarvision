@@ -548,15 +548,6 @@ function ServicesSection() {
 function PortfolioSection() {
   return (
     <section className="section-pad section-night clip-wedge-down relative overflow-hidden">
-      {/* Geometric lines on dark bg */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-30"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(91,79,207,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(91,79,207,0.15) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
       {/* Glowing orbs on dark */}
       <div className="absolute top-[-60px] left-[20%] w-80 h-80 rounded-full pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(91,79,207,0.2) 0%, transparent 70%)", filter: "blur(40px)" }} />

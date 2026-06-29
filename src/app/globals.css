@@ -50,14 +50,6 @@
 
   body {
     background-color: var(--bg-root);
-    background-image:
-      /* Geometric prism refractions */
-      linear-gradient(145deg, rgba(91,79,207,0.07) 0%, transparent 40%),
-      linear-gradient(215deg, rgba(59,130,246,0.06) 0%, transparent 40%),
-      linear-gradient(70deg, rgba(6,182,212,0.04) 20%, transparent 60%),
-      /* Subtle warm undertone */
-      radial-gradient(ellipse at 100% 0%, rgba(232,121,160,0.05) 0%, transparent 45%);
-    background-attachment: fixed;
     color: var(--ink-700);
     font-family: 'Inter', 'Outfit', sans-serif;
     line-height: 1.6;
@@ -82,23 +74,11 @@
   /* Deep prism scene — full page backdrop */
   .prism-scene {
     background-color: var(--bg-root);
-    background-image:
-      linear-gradient(145deg, rgba(91,79,207,0.09) 0%, transparent 45%),
-      linear-gradient(215deg, rgba(59,130,246,0.07) 0%, transparent 45%),
-      linear-gradient(70deg,  rgba(6,182,212,0.05) 15%, transparent 55%),
-      radial-gradient(ellipse at 80% 20%, rgba(232,121,160,0.05) 0%, transparent 40%);
-    background-attachment: fixed;
   }
 
   /* Hero: dramatic diagonal split */
   .hero-prism {
-    background:
-      linear-gradient(135deg,
-        #e8eeff 0%,
-        #f0f4ff 35%,
-        #f8f6ff 65%,
-        #eff8ff 100%
-      );
+    background-color: var(--bg-root);
     position: relative;
     overflow: hidden;
   }
@@ -175,8 +155,6 @@
 
   /* Diamond dot pattern */
   .dot-matrix {
-    background-image: radial-gradient(circle, rgba(91,79,207,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
   }
 
   /* Razor accent lines — used as decorative elements */
