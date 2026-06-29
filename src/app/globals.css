@@ -166,9 +166,10 @@
 
   /* Geometric grid overlay */
   .geo-grid {
-    background-image:
+    /* Disabled grid type design as requested */
+    /* background-image:
       linear-gradient(rgba(91,79,207,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(91,79,207,0.05) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(91,79,207,0.05) 1px, transparent 1px); */
     background-size: 60px 60px;
   }
 
